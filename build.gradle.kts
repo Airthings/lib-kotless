@@ -31,29 +31,22 @@ subprojects {
     }
 
     publishing {
-        publications {
-            this.create("jarPublication", MavenPublication::class.java) {
-                artifactId = project.name
-
-                from (project.components.getByName("java"))
-
-                artifact(tasks["sourcesJar"])
-            }
-        }
-
         repositories {
             maven {
-                name = "SpacePackages"
-                url = uri("https://packages.jetbrains.team/maven/p/ktls/maven")
-
+                name = "AirthingsGitHubPackages"
+                url = uri("https://maven.pkg.github.com/airthings/lib-kotless")
                 credentials {
-                    username = System.getenv("JB_SPACE_CLIENT_ID")
-                    password = System.getenv("JB_SPACE_CLIENT_SECRET")
+                    username = System.getenv("GITHUB_ACTOR")
+                    password = System.getenv("GITHUB_TOKEN")
                 }
             }
         }
+        publications {
+            register("libKotless", MavenPublication::class) {
+                from(components["java"])
+            }
+        }
     }
-
     tasks.withType<KotlinJvmCompile> {
         kotlinOptions {
             jvmTarget = "1.8"

@@ -23,13 +23,7 @@ jobs:
           distribution: 'adopt'
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: Publish mqtt api-client to github packages
-        run: ./gradlew -Pversion=${{ steps.latesttag.outputs.tag }} api-client:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-          GITHUB_ACCESS_TOKEN_READ_PACKAGES: ${{ secrets.ACCESS_TOKEN_READ_PACKAGES }}
-      - name: Publish mqtt common to github packages
+      - name: Publish kotless to github packages
         run: ./gradlew -Pversion=${{ steps.latesttag.outputs.tag }} publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

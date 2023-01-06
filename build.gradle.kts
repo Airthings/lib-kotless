@@ -49,10 +49,7 @@ subprojects {
     }
     tasks.withType<KotlinJvmCompile> {
         kotlinOptions {
-            jvmTarget = "1.8"
-            languageVersion = "1.5"
-            apiVersion = "1.5"
-
+            jvmTarget = "11"
             freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-experimental=kotlin.Experimental")
         }
     }

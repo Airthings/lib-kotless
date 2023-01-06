@@ -7,7 +7,7 @@ import io.kotless.dsl.lang.LambdaWarming
 import io.kotless.dsl.reflection.ReflectionScanner
 import org.slf4j.LoggerFactory
 
-@InternalAPI
+
 object Application {
     private val logger = LoggerFactory.getLogger(Application::class.java)
 

@@ -26,13 +26,29 @@ class KotlessRequest(val query: HttpRequest, call: ApplicationCall) : BaseApplic
     }
 
     override val local: RequestConnectionPoint = object : RequestConnectionPoint {
+        @Deprecated("Use localHost or serverHost instead")
         override val host: String = query.context.domain
+        override val localAddress: String
+            get() = TODO("Not yet implemented")
+        override val localHost: String
+            get() = TODO("Not yet implemented")
+        override val localPort: Int
+            get() = TODO("Not yet implemented")
         override val method: HttpMethod = HttpMethod.parse(query.method.name)
 
         //Port is not applicable in case of Serverless execution
+        @Deprecated("Use localPort or serverPort instead")
         override val port: Int = -1
+        override val remoteAddress: String
+            get() = TODO("Not yet implemented")
         override val remoteHost: String = query.context.sourceIp
+        override val remotePort: Int
+            get() = TODO("Not yet implemented")
         override val scheme: String = query.context.protocol
+        override val serverHost: String
+            get() = TODO("Not yet implemented")
+        override val serverPort: Int
+            get() = TODO("Not yet implemented")
         override val uri: String = query.path
         override val version: String = query.context.protocol
     }

@@ -25,7 +25,6 @@ import java.io.OutputStream
  * * ApiGateway Post and Get requests
  * * CloudWatch events (used for warming and scheduling)
  */
-@InternalAPI
 class HandlerAWS : RequestStreamHandler {
     companion object {
         private val logger = LoggerFactory.getLogger(HandlerAWS::class.java)

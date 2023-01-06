@@ -17,11 +17,9 @@ data class KotlessConfig(
     val optimization: Optimization = Optimization(),
 ) : Visitable {
 
-    @InternalAPI
     val aws: Cloud.AWS
         get() = cloud as Cloud.AWS
 
-    @InternalAPI
     val azure: Cloud.Azure
         get() = cloud as Cloud.Azure
 

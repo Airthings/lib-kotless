@@ -8,7 +8,6 @@ import kotlinx.serialization.Serializable
 import java.util.*
 
 /** HTTP's request ApiGateway representation */
-@InternalAPI
 @Serializable
 data class AwsHttpRequest(
     val resource: String,
@@ -55,7 +54,7 @@ data class AwsHttpRequest(
         data class RequestIdentity(val sourceIp: String, val userAgent: String?)
     }
 
-    @InternalAPI
+    
     fun toRequest(): HttpRequest {
         return HttpRequest(
             path, method, params.orEmpty(),

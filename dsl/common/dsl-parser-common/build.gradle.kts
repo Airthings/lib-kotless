@@ -18,8 +18,3 @@ dependencies {
     implementation(project(":dsl:kotless:cloud:kotless-lang-azure"))
 }
 
-tasks.withType<KotlinJvmCompile> {
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-experimental=io.kotless.InternalAPI")
-    }
-}

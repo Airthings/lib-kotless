@@ -4,7 +4,6 @@ import io.kotless.InternalAPI
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
 
-@InternalAPI
 object JSON {
     val json = Json {
         ignoreUnknownKeys = true

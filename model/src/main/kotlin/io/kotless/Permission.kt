@@ -52,7 +52,7 @@ enum class AwsResource(
 
     companion object {
         /** Resources that can be created during local start */
-        @InternalAPI
+        
         val forLocalStart = setOf(S3, SSM, DynamoDB)
     }
 }

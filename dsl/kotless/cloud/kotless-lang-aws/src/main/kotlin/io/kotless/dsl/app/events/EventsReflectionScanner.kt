@@ -10,7 +10,6 @@ import kotlin.reflect.KFunction
 import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.jvm.kotlinFunction
 
-@InternalAPI
 object EventsReflectionScanner {
     data class Data(val ids: Set<String>, val method: Method, val annotation: Scheduled)
 

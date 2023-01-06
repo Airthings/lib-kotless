@@ -1,13 +1,11 @@
 package io.kotless.dsl.app.events
 
-import io.kotless.InternalAPI
 import io.kotless.dsl.lang.event.Scheduled
 import org.slf4j.LoggerFactory
 import kotlin.reflect.KFunction
 import kotlin.reflect.jvm.kotlinFunction
 
 
-@InternalAPI
 internal object EventsStorage {
     private val logger = LoggerFactory.getLogger(EventsStorage::class.java)
 

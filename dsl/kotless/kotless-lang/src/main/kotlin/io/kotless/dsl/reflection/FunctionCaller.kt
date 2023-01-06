@@ -6,7 +6,7 @@ import kotlin.jvm.internal.FunctionReference
 import kotlin.reflect.*
 import kotlin.reflect.jvm.isAccessible
 
-@InternalAPI
+
 object FunctionCaller {
     private object NULL
 

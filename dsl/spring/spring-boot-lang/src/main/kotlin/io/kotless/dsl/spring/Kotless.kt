@@ -29,7 +29,6 @@ abstract class Kotless : RequestStreamHandler {
         private var handler: SpringBootLambdaContainerHandler<AwsProxyRequest, AwsProxyResponse>? = null
     }
 
-    @InternalAPI
     override fun handleRequest(input: InputStream, output: OutputStream, context: Context) {
         if (!prepared) {
             handler = SpringBootLambdaContainerHandler.getAwsProxyHandler(bootKlass.java)

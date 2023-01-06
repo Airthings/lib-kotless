@@ -10,7 +10,7 @@ import io.kotless.dsl.reflection.ReflectionScanner
 import org.slf4j.LoggerFactory
 import java.lang.reflect.InvocationTargetException
 
-@InternalAPI
+
 object RoutesDispatcher {
     private val logger = LoggerFactory.getLogger(RoutesDispatcher::class.java)
 

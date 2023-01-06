@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 import kotlin.reflect.KFunction
 import kotlin.reflect.full.findAnnotation
 
-@InternalAPI
+
 internal object RoutesStorage {
     data class Descriptor(val func: KFunction<*>, val mime: MimeType)
 

@@ -21,7 +21,6 @@ import java.util.Optional
  * Override [prepare] method and setup your application
  */
 @Suppress("unused")
-@InternalAPI
 abstract class KotlessAzure : AzureRequestHandler {
     companion object {
         private val logger = LoggerFactory.getLogger(KotlessAzure::class.java)
@@ -37,7 +36,7 @@ abstract class KotlessAzure : AzureRequestHandler {
 
     abstract fun prepare(app: Application)
 
-    @InternalAPI
+    
     override fun run(
         @HttpTrigger(
             name = "req",

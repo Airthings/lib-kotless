@@ -7,7 +7,7 @@ import kotlin.reflect.KFunction
 import kotlin.reflect.jvm.kotlinFunction
 
 
-@InternalAPI
+
 internal object EventsStorage {
     private val logger = LoggerFactory.getLogger(EventsStorage::class.java)
 

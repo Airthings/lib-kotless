@@ -13,7 +13,7 @@ import io.kotless.dsl.reflection.FunctionCaller
 import org.slf4j.LoggerFactory
 import java.util.*
 
-@InternalAPI
+
 class HandlerAzure : AzureRequestHandler {
     companion object {
         private val logger = LoggerFactory.getLogger(HandlerAzure::class.java)

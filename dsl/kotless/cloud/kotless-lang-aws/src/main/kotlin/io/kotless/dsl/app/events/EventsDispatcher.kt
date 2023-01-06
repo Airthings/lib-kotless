@@ -7,7 +7,6 @@ import io.kotless.dsl.cloud.aws.CloudWatch
 import io.kotless.dsl.reflection.FunctionCaller
 import org.slf4j.LoggerFactory
 
-@InternalAPI
 object EventsDispatcher {
     private val logger = LoggerFactory.getLogger(EventsDispatcher::class.java)
 

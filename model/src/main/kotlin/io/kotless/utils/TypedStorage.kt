@@ -1,9 +1,6 @@
 package io.kotless.utils
 
-import io.kotless.InternalAPI
-
 /** Interface for type-full singleton storage */
-@InternalAPI
 class TypedStorage<T>(private val storage: MutableMap<Key<T>, T> = HashMap()) {
     class Key<T>
 

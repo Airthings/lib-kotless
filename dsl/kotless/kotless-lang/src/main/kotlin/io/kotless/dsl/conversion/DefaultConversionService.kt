@@ -12,7 +12,7 @@ import java.net.URLEncoder
 
 /** The default conversion service that supports only basic types and enums */
 @Suppress("ComplexMethod")
-@InternalAPI
+
 internal object DefaultConversionService : ConversionService() {
     override fun convertTo(value: Any): String {
         return when (val type = value.javaClass) {

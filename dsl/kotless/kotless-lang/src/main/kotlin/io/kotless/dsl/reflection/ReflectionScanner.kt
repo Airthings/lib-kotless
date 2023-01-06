@@ -19,7 +19,7 @@ import kotlin.reflect.jvm.kotlinFunction
  *
  * For example, it is used to find HTTP handlers and @Scheduled functions
  */
-@InternalAPI
+
 object ReflectionScanner {
     private val reflections by lazy {
         val configurationBuilder = ConfigurationBuilder()

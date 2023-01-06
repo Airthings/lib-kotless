@@ -91,6 +91,6 @@ internal class LocalStackRunner(private val isEnabled: Boolean, resources: Set<A
         logger.lifecycle("LocalStack stopped...")
     }
 
-    private fun AwsResource.toService() = LocalStackContainer.Service.valueOf(prefix.toUpperCase())
-    private fun LocalStackContainer.Service.toResource() = AwsResource.values().find { it.prefix.toUpperCase() == name }!!
+    private fun AwsResource.toService() = LocalStackContainer.Service.valueOf(prefix.uppercase())
+    private fun LocalStackContainer.Service.toResource() = AwsResource.values().find { it.prefix.uppercase() == name }!!
 }

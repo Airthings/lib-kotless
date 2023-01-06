@@ -13,8 +13,3 @@ dependencies {
     api("io.ktor", "ktor-server-netty", Versions.ktor)
 }
 
-tasks.withType<KotlinJvmCompile> {
-    kotlinOptions {
-        freeCompilerArgs = freeCompilerArgs + listOf("-Xuse-experimental=io.kotless.InternalAPI")
-    }
-}

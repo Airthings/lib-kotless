@@ -13,7 +13,7 @@ object KotlessContext {
     object HTTP {
         private var currentRequest: ThreadLocal<HttpRequest?> = ThreadLocal.withInitial { null }
 
-        @InternalAPI
+        
         internal fun reset() {
             currentRequest.remove()
         }

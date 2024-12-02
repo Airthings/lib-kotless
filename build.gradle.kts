@@ -1,74 +1,60 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
+import com.airthings.buildtools.util.Dependencies
+import com.airthings.buildtools.util.Library
+import com.airthings.buildtools.util.testImplementationAll
 
-group = "io.kotless"
+group = "com.airthings.cloud.kotless"
 
 plugins {
-    id("io.gitlab.arturbosch.detekt") version ("1.15.0") apply true
-    kotlin("jvm") version "1.8.0" apply false
+    `java-library`
     `maven-publish`
 }
 
+kotlin {
+    explicitApi()
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementationAll(*Dependencies.kotest)
+    testImplementationAll(*Dependencies.moshi)
+    testImplementation(Dependencies.kotlinsnapshot)
+    implementation(Dependencies.sensortype)
+}
+
+val latestTag = command("git describe --tags --abbrev=0") ?: "dummy.version" // dummy version for builds != deployment/publish
+
 subprojects {
-    apply {
-        plugin("kotlin")
-        plugin("maven-publish")
-        plugin("io.gitlab.arturbosch.detekt")
-    }
+    version = latestTag
+}
 
+publishing {
     repositories {
-        mavenCentral()
-        gradlePluginPortal()
-        maven(url = uri("https://packages.jetbrains.team/maven/p/ktls/maven"))
-    }
-
-    val sourceSets = this.extensions.getByName("sourceSets") as SourceSetContainer
-
-
-    task<Jar>("sourcesJar") {
-        archiveClassifier.set("sources")
-        from(sourceSets["main"]!!.allSource)
-    }
-
-    publishing {
-        repositories {
-            maven {
-                name = "AirthingsGitHubPackages"
-                url = uri("https://maven.pkg.github.com/airthings/lib-kotless")
-                credentials {
-                    username = System.getenv("GITHUB_ACTOR")
-                    password = System.getenv("GITHUB_TOKEN")
-                }
-            }
-        }
-        publications {
-            register("libKotless", MavenPublication::class) {
-                from(components["java"])
-            }
-        }
-    }
-    tasks.withType<KotlinJvmCompile> {
-        kotlinOptions {
-            jvmTarget = "11"
-        }
-    }
-
-    detekt {
-        parallel = true
-
-        config = rootProject.files("detekt.yml")
-
-        reports {
-            xml {
-                enabled = false
-            }
-            html {
-                enabled = false
+        maven {
+            name = "AirthingsGitHubPackages"
+            url = uri("https://maven.pkg.github.com/airthings/lib-kotless")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
 
-    afterEvaluate {
-        System.setProperty("gradle.publish.key", System.getenv("gradle_publish_key") ?: "")
-        System.setProperty("gradle.publish.secret", System.getenv("gradle_publish_secret") ?: "")
+    publications {
+        withType<MavenPublication> {
+            pom {
+                artifactId = "kotless"
+            }
+        }
     }
+}
+
+fun command(command: String): String? {
+    val cmd = command.split(" ").toTypedArray()
+    val process = ProcessBuilder(*cmd)
+        .redirectOutput(ProcessBuilder.Redirect.PIPE)
+        .start()
+    return process.inputStream.bufferedReader().readLine()?.trim()
 }

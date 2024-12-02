@@ -1,0 +1,25 @@
+name: Tests
+on:
+  pull_request
+env:
+  JDK_VERSION: 11
+  JDK_DISTRIBUTION: adopt
+
+jobs:
+  unit_tests:
+    runs-on: ubuntu-latest
+    name: Unit tests
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ env.JDK_DISTRIBUTION }}
+          java-version: ${{ env.JDK_VERSION }}
+
+      - name: Run unit tests
+        uses: gradle/gradle-build-action@v2.7.0
+        env:
+          GITHUB_ACCESS_TOKEN_READ_PACKAGES: ${{ secrets.ACCESS_TOKEN_READ_PACKAGES }}
+        with:
+          arguments: test
